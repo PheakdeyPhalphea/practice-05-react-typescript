@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { FooterComponent } from "./FooterComponents/Footer";
 import NavBarComponents from "./NavBarComponents/NavBar";
-import LoadingComponent from "./LoadingComponents/loading";
 import { CardProductComponent } from "./CardComponents/Card";
 import ButtonComponent from "./ButtonComponents/Button";
+import FailLoadingComponent from "./LoadingComponents/FailLoading/FailLoading";
+import SuccessLoadingComponent from "./LoadingComponents/SuccessLoading/Successloading";
+import LoadingComponent from "./LoadingComponents/Loading";
 export type product = {
   title: string;
   price: number;
@@ -20,7 +22,9 @@ export const HomeComponent = () => {
       const jsonBody = await response.json();
       console.log(jsonBody);
       setGetProduct(jsonBody);
+      <SuccessLoadingComponent />;
     } catch (error) {
+      <FailLoadingComponent />;
       console.log(error);
     } finally {
       setGetLoading(false);
@@ -45,7 +49,7 @@ export const HomeComponent = () => {
             <LoadingComponent />
           </div>
         ) : (
-          <section className="grid grid-cols-4 gap-5">
+          <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  gap-5">
             {getProduct?.map((e, index) => (
               <CardProductComponent
                 image={e.image}

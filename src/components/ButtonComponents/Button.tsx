@@ -1,7 +1,7 @@
 "use client";
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
-import FormComponent from "../formComponents/form";
+import FormComponent from "../formComponents/Form";
 
 export default function ButtonComponent() {
   const [openModal, setOpenModal] = useState(false);
